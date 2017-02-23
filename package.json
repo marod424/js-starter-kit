@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "prestart": "babel-node build/start-message.js",
-    "start": "npm-run-all --parallel security-check start-dev-server lint:watch test:watch",
+    "start": "npm-run-all --parallel security-check start-dev-server lint:watch test:watch start-mock-api",
     "start-dev-server": "babel-node build/dev-server.js",
     "lint": "esw webpack.config.* src build --color",
     "lint:watch": "npm run lint -- --watch",
     "security-check": "nsp check",
     "test": "mocha --reporter progress --colors build/test-setup.js \"src/**/*.test.js\"",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "generate-mock-data": "babel-node build/generate-mock-data",
+    "prestart-mock-api": "npm run generate-mock-data",
+    "start-mock-api": "json-server --watch src/api/db.json --port 3001"
   },
   "repository": {
     "type": "git",
@@ -23,7 +26,9 @@
     "url": "https://github.com/marod424/js-starter-kit/issues"
   },
   "homepage": "https://github.com/marod424/js-starter-kit#readme",
-  "dependencies": {},
+  "dependencies": {
+    "whatwg-fetch": "^2.0.2"
+  },
   "devDependencies": {
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
@@ -37,10 +42,11 @@
     "eslint-watch": "^3.0.0",
     "express": "^4.14.1",
     "jsdom": "^9.11.0",
+    "json-schema-faker": "^0.4.0",
+    "json-server": "^0.9.5",
     "mocha": "^3.2.0",
     "npm-run-all": "^4.0.1",
     "nsp": "^2.6.2",
-    "numeral": "^2.0.4",
     "open": "^0.0.5",
     "style-loader": "^0.13.1",
     "webpack": "1.13.2",

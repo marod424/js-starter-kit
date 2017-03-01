@@ -2,17 +2,21 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
-  debug: true,
+  target: 'web',
   devtool: 'inline-source-map',
-  noInfo: true,
   entry: [
     path.resolve(__dirname, 'src/index'),
   ],
-  target: 'web',
   output: {
     path: path.resolve(__dirname, 'src'),
     publicPath: '/',
     filename: 'bundle.js'
+  },
+  module: {
+    rules: [
+      { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.css$/, use: 'css-loader' },
+    ]
   },
   plugins: [
     // Create HTML file that includes references to bundled JS
@@ -20,11 +24,5 @@ export default {
       template: 'src/index.html',
       inject: true
     })
-  ],
-  module: {
-    loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
-      {test: /\.css$/, loaders: ['style', 'css']},
-    ]
-  }
+  ]
 }

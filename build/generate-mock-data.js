@@ -4,10 +4,8 @@
   and rapid page loads due to local, static data.
   */
 
-/* eslint-disable no-console */
-
 import jsf from 'json-schema-faker';
-import {schema} from './mock-data-schema';
+import { schema } from './mock-data-schema';
 import fs from 'fs';
 import chalk from 'chalk';
 

@@ -8,12 +8,22 @@ import config from '../webpack.config.dev';
 
 const port = 3000;
 const app = express();
+
+// setup on the fly compilation and hot reload
+config.entry.app = ['webpack-hot-middleware/client', config.entry.app];
+config.plugins.push(
+  new webpack.HotModuleReplacementPlugin(),
+  new webpack.NoEmitOnErrorsPlugin()
+);
+
 const compiler = webpack(config);
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath
 }));
+
+app.use(require('webpack-hot-middleware')(compiler));
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../src/index.html'));

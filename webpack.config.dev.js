@@ -4,9 +4,9 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 export default {
   target: 'web',
   devtool: 'inline-source-map',
-  entry: [
-    path.resolve(__dirname, 'src/index'),
-  ],
+  entry: {
+    app: path.resolve(__dirname, 'src/index'),
+  },
   output: {
     path: path.resolve(__dirname, 'src'),
     publicPath: '/',

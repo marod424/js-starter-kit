@@ -24,6 +24,8 @@ export default {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       inject: true
+      inject: true,
+      favicon: 'favicon.ico'
     })
   ]
 }

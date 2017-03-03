@@ -58,7 +58,8 @@ export default {
         minifyCSS: true,
         minifyURLs: true
       },
-      inject: true
+      inject: true,
+      favicon: 'favicon.ico'
     }),
 
     // Minify JS

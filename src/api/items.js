@@ -3,12 +3,12 @@ import getBaseUrl from './base-url';
 
 const baseUrl = getBaseUrl();
 
-export function getUsers() {
-  return get('users');
+export function getitems() {
+  return get('items');
 }
 
-export function deleteUser(id) {
-  return del(`users/${id}`);
+export function deleteitem(id) {
+  return del(`items/${id}`);
 }
 
 function get(url) {

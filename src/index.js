@@ -1,23 +1,23 @@
 import './index.css';
-import { getUsers, deleteUser } from './api/users';
+import { getitems, deleteitem } from './api/items';
 
-// Populate table of users via API call
-getUsers().then(result => {
-  let usersBody = "";
+// Populate table of items via API call
+getitems().then(result => {
+  let itemsBody = "";
 
-  result.forEach(user => {
-    usersBody += `<tr>
-      <td><a href="#" data-id="${user.id}" class="deleteUser">Delete</a></td>
-      <td>${user.id}</td>
-      <td>${user.firstName}</td>
-      <td>${user.lastName}</td>
-      <td>${user.email}</td>
+  result.forEach(item => {
+    itemsBody += `<tr>
+      <td><a href="#" data-id="${item.id}" class="deleteitem">Delete</a></td>
+      <td>${item.id}</td>
+      <td>${item.firstName}</td>
+      <td>${item.lastName}</td>
+      <td>${item.email}</td>
       <tr>`
   });
 
-  global.document.getElementById('users').innerHTML = usersBody;
+  global.document.getElementById('items').innerHTML = itemsBody;
 
-  const deleteLinks = global.document.getElementsByClassName('deleteUser');
+  const deleteLinks = global.document.getElementsByClassName('deleteitem');
 
   // Must use array.from to create a real array from a DOM collection
   // getElementsByClassName only returns an "array like" object
@@ -25,7 +25,7 @@ getUsers().then(result => {
     link.onclick = function(event) {
       const element = event.target;
       event.preventDefault();
-      deleteUser(element.attributes['data-id'].value);
+      deleteitem(element.attributes['data-id'].value);
       const row = element.parentNode.parentNode;
       row.parentNode.removeChild(row);
     };

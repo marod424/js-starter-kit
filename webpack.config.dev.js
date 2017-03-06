@@ -16,14 +16,22 @@ export default {
     rules: [
       { enforce: 'pre', test: /\.js$/, use: 'eslint-loader', exclude: /node_modules/ },
       { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.css$/, use: 'css-loader' },
+      { test: /\.css$/, use: ['style-loader', 'css-loader']},
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]?[hash]'
+          }
+        }
+      }
     ]
   },
   plugins: [
     // Create HTML file that includes references to bundled JS
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      inject: true
       inject: true,
       favicon: 'favicon.ico'
     })

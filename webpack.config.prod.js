@@ -20,14 +20,26 @@ export default {
     rules: [
       { enforce: 'pre', test: /\.js$/, use: 'eslint-loader', exclude: /node_modules/ },
       { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.css$/, use: ExtractTextPlugin.extract({
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          use: {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        })
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
         use: {
-          loader: 'css-loader',
+          loader: 'file-loader',
           options: {
-            sourceMap: true
+            name: '[name].[ext]?[hash]'
           }
         }
-      }) },
+      }
     ]
   },
   plugins: [

@@ -1,7 +1,15 @@
 body {
   font-family: sans-serif;
+  background-color: #FAF9F9;
 }
 
 table th {
-  padding: 5px;
+  padding: 10px;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

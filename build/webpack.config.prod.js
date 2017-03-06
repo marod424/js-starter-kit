@@ -3,46 +3,19 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WebpackMd5Hash from 'webpack-md5-hash';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import base from './webpack.config.base.js';
 
-export default {
-  target: 'web',
+const config = Object.assign({}, base, {
   devtool: 'source-map',
   entry: {
-    vendor: path.resolve(__dirname, 'src/vendor'),
-    main: path.resolve(__dirname, 'src/index')
+    vendor: path.resolve(__dirname, '../src/vendor'),
+    main: path.resolve(__dirname, '../src/index')
   },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+  output: Object.assign({}, base.output, {
+    path: path.resolve(__dirname, '../dist'),
     filename: '[name].[chunkhash].js'
-  },
-  module: {
-    rules: [
-      { enforce: 'pre', test: /\.js$/, use: 'eslint-loader', exclude: /node_modules/ },
-      { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          use: {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        })
-      },
-      {
-        test: /\.(png|jpg|gif|svg|ttf)$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]?[hash]'
-          }
-        }
-      }
-    ]
-  },
-  plugins: [
+  }),
+  plugins: (base.plugins || []).concat([
     // Generate an external css file with a hash in the filename
     new ExtractTextPlugin('[name].[contenthash].css'),
 
@@ -76,5 +49,21 @@ export default {
 
     // Minify JS
     new webpack.optimize.UglifyJsPlugin()
-  ]
-}
+  ])
+});
+
+config.module.rules.push(
+  {
+    test: /\.css$/,
+    use: ExtractTextPlugin.extract({
+      use: {
+        loader: 'css-loader',
+        options: {
+          sourceMap: true
+        }
+      }
+    })
+  }
+);
+
+export default config;

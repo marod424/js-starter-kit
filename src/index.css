@@ -1,5 +1,15 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url('/fonts/Roboto-Bold.ttf');
+}
+
 body {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: #FAF9F9;
 }
 
@@ -12,4 +22,8 @@ table th {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.title {
+  font-family: 'Roboto-Bold', sans-serif;
 }

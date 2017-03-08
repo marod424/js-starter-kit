@@ -29,10 +29,10 @@ describe('index.html', () => {
     });
   });
 
-  it('should have an \'items\' table', (done) => {
+  it('should have an \'app\' container', (done) => {
     jsdom.env(index, function(err, window) {
-      const table = window.document.getElementsByTagName('table')[0];
-      expect(table.id).to.equal('items');
+      const app = window.document.getElementById('app');
+      expect(app).to.exist;
       done();
       window.close();
     })

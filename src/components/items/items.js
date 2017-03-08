@@ -1,5 +1,13 @@
 import './items.css';
-import { getItems, deleteItem } from '../api/items';
+import { getItems, deleteItem } from '../../api/items';
+
+export let itemsHTML = global.document.getElementById('items');
+
+if (!itemsHTML) {
+  itemsHTML = document.createElement('table');
+  itemsHTML.id = 'items';
+  itemsHTML.className = 'items';
+}
 
 // Populate table of items via API call
 getItems().then(result => {
@@ -19,7 +27,7 @@ getItems().then(result => {
       </tbody>`
   });
 
-  global.document.getElementById('items').innerHTML = itemsBody;
+  itemsHTML.innerHTML = itemsBody;
 
   const deleteLinks = global.document.getElementsByClassName('deleteItem');
 

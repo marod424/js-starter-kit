@@ -1,5 +1,5 @@
 import './index.css';
-import './components/items';
+import { itemsHTML } from './components/items/items';
 
 /* Tell webpack that this module can handle being hot reloaded,
   otherwise it will not hot reload and will display the following
@@ -13,3 +13,6 @@ import './components/items';
 if (module.hot) {
   module.hot.accept();
 }
+
+// Put component html into the app container
+global.document.getElementById('app').appendChild(itemsHTML);

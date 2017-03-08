@@ -16,6 +16,7 @@
   },
   "rules": {
     "no-console": "off",
+    "no-debugger": "warn",
     "indent": ["warn", 2],
     "eqeqeq": ["warn", "smart"],
     "space-in-parens": ["warn", "never"],

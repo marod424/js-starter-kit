@@ -32,9 +32,9 @@ app.get('/', function(req, res) {
 app.get('/items', function(req, res) {
   // Hard coding for simplicity.  Pretend this hits a real database
   res.json([
-    { "id": 1, "firstName": "Bob", "lastName": "Glaser", "email": "bglaser@gmail.com" },
-    { "id": 2, "firstName": "Russ", "lastName": "Stamm", "email": "ramm@gmail.com" },
-    { "id": 3, "firstName": "Zac", "lastName": "Levine", "email": "zlevi@gmail.com" }
+    { "id": 1, "title": "README", "description": "What's inside?", "link": "readme.html" },
+    { "id": 2, "title": "Logo", "description": "Check out our logo!", "link": "logo.png" },
+    { "id": 3, "title": "Roboto-Regular", "description": "Download", "link": "fonts/Roboto-Regular.ttf" }
   ]);
 });
 

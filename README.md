@@ -24,5 +24,5 @@ JavaScript development environment starter kit.
 ## Scripts
 
 - Run development server `npm start`
-- Build for produciton `npm run build`
+- Build for production `npm run build`
 - Run tests `npm test`

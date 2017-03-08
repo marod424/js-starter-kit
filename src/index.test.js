@@ -9,11 +9,11 @@ describe('Our first test', () => {
 });
 
 describe('index.html', () => {
-  it('should have h2 that says Items', (done) => {
+  it('should have h1 that says \'JS Starter Kit\'', (done) => {
     const index = fs.readFileSync('./src/index.html', 'utf-8');
     jsdom.env(index, function(err, window) {
-      const h1 = window.document.getElementsByTagName('h2')[0];
-      expect(h1.innerHTML).to.equal('Items');
+      const h1 = window.document.getElementsByTagName('h1')[0];
+      expect(h1.innerHTML).to.equal('JS Starter Kit');
       done();
       window.close();
     });

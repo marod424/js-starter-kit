@@ -1,23 +1,27 @@
 import './index.css';
-import { getitems, deleteitem } from './api/items';
+import { getItems, deleteItem } from './api/items';
 
 // Populate table of items via API call
-getitems().then(result => {
+getItems().then(result => {
   let itemsBody = "";
 
-  result.forEach(item => {
-    itemsBody += `<tr>
-      <td><a href="#" data-id="${item.id}" class="deleteitem">Delete</a></td>
-      <td>${item.id}</td>
-      <td>${item.firstName}</td>
-      <td>${item.lastName}</td>
-      <td>${item.email}</td>
-      <tr>`
+  // sort items
+  let items = result.sort((a, b) => {
+    return a.id - b.id;
+  });
+
+  items.forEach(item => {
+    itemsBody += `<tbody>
+        <td>${item.id}.</td>
+        <td class="title">${item.title}</td>
+        <td><a href="/${item.link}">${item.description}</a></td>
+        <td><a href="#" data-id="${item.id}" class="deleteItem">Delete</a></td>
+      </tbody>`
   });
 
   global.document.getElementById('items').innerHTML = itemsBody;
 
-  const deleteLinks = global.document.getElementsByClassName('deleteitem');
+  const deleteLinks = global.document.getElementsByClassName('deleteItem');
 
   // Must use array.from to create a real array from a DOM collection
   // getElementsByClassName only returns an "array like" object
@@ -25,7 +29,7 @@ getitems().then(result => {
     link.onclick = function(event) {
       const element = event.target;
       event.preventDefault();
-      deleteitem(element.attributes['data-id'].value);
+      deleteItem(element.attributes['data-id'].value);
       const row = element.parentNode.parentNode;
       row.parentNode.removeChild(row);
     };

@@ -3,32 +3,33 @@ export const schema = {
   "properties": {
     "items": {
       "type": "array",
-      "minItems": 3,
+      "minItems": 5,
       "maxItems": 5,
       "items": {
         "type": "object",
         "properties": {
           "id": {
-            "type": "number",
+            "type": "integer",
             "unique": true,
-            "minimum": 1
+            "minimum": 1,
+            "maximum": 100,
           },
-          "firstName": {
+          "title": {
             "type": "string",
-            "faker": "name.firstName"
+            "faker": "random.word"
           },
-          "lastName": {
+          "description": {
             "type": "string",
-            "faker": "name.lastName",
+            "faker": "random.words",
           },
-          "email": {
+          "link": {
             "type": "string",
-            "faker": "internet.email",
+            "faker": "system.commonFileName",
           }
         },
-        required: ['id', 'firstName', 'lastName', 'email']
+        required: ["id", "title", "description", "link"]
       }
     }
   },
-  required: ['items']
+  required: ["items"]
 };

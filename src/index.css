@@ -8,6 +8,11 @@
   src: url('/fonts/Roboto-Bold.ttf');
 }
 
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #FAF9F9;
@@ -18,6 +23,7 @@ table th {
 }
 
 .center {
+  height: 75%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,4 +34,12 @@ table th {
   font-family: 'Roboto-Bold', sans-serif;
   color: #005A8B;
   font-size: 4em;
+}
+
+td.title {
+  font-size: 1em;
+}
+
+.items a {
+  margin-left: 10px;
 }

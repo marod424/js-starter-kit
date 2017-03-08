@@ -3,11 +3,11 @@ import getBaseUrl from './base-url';
 
 const baseUrl = getBaseUrl();
 
-export function getitems() {
+export function getItems() {
   return get('items');
 }
 
-export function deleteitem(id) {
+export function deleteItem(id) {
   return del(`items/${id}`);
 }
 

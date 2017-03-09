@@ -32,7 +32,7 @@ app.get('/', function(req, res) {
 app.get('/items', function(req, res) {
   // Hard coding for simplicity.  Pretend this hits a real database
   res.json([
-    { "id": 1, "title": "README", "description": "What's inside?", "link": "readme.html" },
+    { "id": 1, "title": "README", "description": "What's inside?", "link": "?q=readme" },
     { "id": 2, "title": "Logo", "description": "Check out our logo!", "link": "logo.png" },
     { "id": 3, "title": "Roboto-Regular", "description": "Download", "link": "fonts/Roboto-Regular.ttf" }
   ]);

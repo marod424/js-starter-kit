@@ -22,16 +22,19 @@ table th {
   padding: 10px;
 }
 
+h1, h2 {
+  font-family: 'Roboto-Bold', sans-serif;
+}
+
 .center {
-  height: 75%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 3em 0;
 }
 
 .title {
-  font-family: 'Roboto-Bold', sans-serif;
   color: #005A8B;
   font-size: 4em;
 }

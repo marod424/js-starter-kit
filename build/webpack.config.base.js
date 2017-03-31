@@ -15,7 +15,7 @@ export default {
       { enforce: 'pre', test: /\.js$/, use: 'eslint-loader', exclude: /node_modules/ },
       { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
       {
-        test: /\.(png|jpg|gif|svg|ttf)$/,
+        test: /\.(png|jpg|gif|svg|ttf|eot|woff(2)?)$/,
         use: {
           loader: 'file-loader',
           options: {

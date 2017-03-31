@@ -16,6 +16,14 @@ const config = Object.assign({}, base, {
     filename: '[name].[chunkhash].js'
   }),
   plugins: (base.plugins || []).concat([
+    // Define node environment variable to be production
+    // https://webpack.js.org/guides/production-build/#node-environment-variable
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV':  JSON.stringify('production')
+      }
+    }),
+
     // Generate an external css file with a hash in the filename
     new ExtractTextPlugin('[name].[contenthash].css'),
 
